@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI/CD with Maven
 
 on:
   push:
@@ -24,8 +24,8 @@ jobs:
       working-directory: online-learning-system/online-learning-system
       run: mvn -B package --file pom.xml -DskipTests
 
-    - name: Upload build artifact
+    - name: Upload JAR file as Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: springboot-app
+        name: online-learning-system-jar
         path: online-learning-system/online-learning-system/target/*.jar
