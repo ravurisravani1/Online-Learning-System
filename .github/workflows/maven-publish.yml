@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
@@ -21,7 +21,9 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
+      working-directory: online-learning-system/online-learning-system   # 👈 Folder path where pom.xml exists
       run: mvn -B package --file pom.xml
 
     - name: Run tests
+      working-directory: online-learning-system/online-learning-system   # 👈 same folder path
       run: mvn test
