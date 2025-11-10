@@ -20,6 +20,12 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
-    - name: Build with Maven (skip tests)
-      working-directory: online-learning-system/online-learning-system   # 👈 path where your pom.xml is
-      run: mvn -B package -DskipTests
+    - name: Build with Maven
+      working-directory: online-learning-system/online-learning-system
+      run: mvn -B package --file pom.xml -DskipTests
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: springboot-app
+        path: online-learning-system/online-learning-system/target/*.jar
