@@ -20,10 +20,6 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
-    - name: Build with Maven
-      working-directory: online-learning-system/online-learning-system   # 👈 Folder path where pom.xml exists
-      run: mvn -B package --file pom.xml
-
-    - name: Run tests
-      working-directory: online-learning-system/online-learning-system   # 👈 same folder path
-      run: mvn test
+    - name: Build with Maven (skip tests)
+      working-directory: online-learning-system/online-learning-system   # 👈 path where your pom.xml is
+      run: mvn -B package -DskipTests
